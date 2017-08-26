@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html>
+<head>
+
+<title>New skin video-js-5.20.3</title>
+
+<!--video-js-->
+<link href="video-js-5.20.3/video-js.css" rel="stylesheet">
+<script src="video-js-5.20.3/video.js"></script>
+<!--resolution-switcher-->
+<link href="video-js-5.20.3/videojs-resolution-switcher.css" rel="stylesheet">
+<script src="video-js-5.20.3/videojs-resolution-switcher.js"></script>
+<!--hls-->
+<script register-percent="100" src="video-js-5.20.3/hola_videojs_hls.js"></script>
+<!--panorama-->
+<link href="video-js-5.20.3/panorama.css" rel="stylesheet">
+<script src="video-js-5.20.3/three.js"></script>
+<script src="video-js-5.20.3/videojs-panorama.v5.min.js"></script>
+<!--Youtube-->
+<script src="video-js-5.20.3/Youtube.js"></script>
+<!--watermark-->
+<link href="video-js-5.20.3/watermark.css" rel="stylesheet">
+<script src="video-js-5.20.3/watermark.js"></script>
+
+</head>
+<body>
+
+<center>
+
+<h1>MP4</h1>
+<video id="play" class="video-js"></video>
+</p>
+<h1>Resolution Switcher</h1>
+<video id="play2" class="video-js"></video>
+</p>
+<video id="play3" class="video-js"></video>
+</p>
+<h1>Hls</h1>
+<video id="play4" class="video-js"></video>
+</p>
+<h1>Panorama / VR</h1>
+<video id="play5" class="video-js" crossorigin="anonymous"></video>
+</p>
+<h1>You Tube</h1>
+<video id="play6" class="video-js"></video>
+</p>
+<h1>Watermark</h1>
+<video id="play7" class="video-js"></video>
+
+<script>
+var Player = videojs("play", { 
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+sources: [
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4', type: 'video/mp4'},
+{ src: 'https://vjs.zencdn.net/v/oceans.webm', type: 'video/webm'},
+{ src: 'https://vjs.zencdn.net/v/oceans.ogg', type: 'video/ogg'},
+],
+});
+
+var Player = videojs("play2", { 
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+sources: [
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4?SD', type: 'video/mp4', label:'SD', res:'360'},
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4?HD', type: 'video/mp4', label:'HD', res:'1080'},
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4?4K', type: 'video/mp4', label:'4K', res:'2160'}
+],
+});
+videojs('play2').videoJsResolutionSwitcher()
+
+var Player = videojs('play3', {
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+plugins: {
+videoJsResolutionSwitcher: {
+default: 'low', // Default resolution [{Number}, 'low', 'high'],
+dynamicLabel: true
+}
+}
+}, 
+function(){
+var player = this;
+window.player = player
+player.updateSrc([
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4?SD', type: 'video/mp4', label:'SD', res:'360'},
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4?HD', type: 'video/mp4', label:'HD', res:'1080'},
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4?4K', type: 'video/mp4', label:'4K', res:'2160'}
+])
+player.on('resolutionchange', function(){
+console.info('Source changed to %s', player.src())
+})
+})
+
+var Player = videojs("play4", {  
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+sources: [
+{ src: 'http://evpp.mm.uol.com.br/redetv1/redetv1/playlist.m3u8', type: 'application/x-mpegURL'},
+],
+});
+
+var Player = videojs("play5", { 
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+sources: [
+{ src: 'https://yanwsh.github.io/videojs-panorama/assets/shark.mp4', type: 'video/mp4'},
+],
+});
+videojs('play5').panorama({clickAndDrag: true});
+
+var Player = videojs("play6", { 
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+"techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://www.youtube.com/watch?v=xjS6SftYQaQ"}],
+});
+  
+var Player = videojs("play7", { 
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "http://vjs.zencdn.net/v/oceans.png",
+"width": 960,
+"height": 400,
+sources: [
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4', type: 'video/mp4'},
+{ src: 'https://vjs.zencdn.net/v/oceans.webm', type: 'video/webm'},
+{ src: 'https://vjs.zencdn.net/v/oceans.ogg', type: 'video/ogg'},
+],
+});
+var Player = videojs('play7').watermark({
+   file: 'video-js-5.20.3/your-logo.png',
+   clickable: true,
+   url: "https://github.com/maluklo",
+       });
+</script>
+</center>
+</body>
+</html>
