@@ -1,7 +1,7 @@
 # Skin-video-js-5.20.3
 New skin-video-js-5.20.3
 
-<img src="https://github.com/maluklo/video-js-6.2.6/blob/master/video-js-6.2.6.png">
+<img src="https://raw.githubusercontent.com/maluklo/Skin-video-js-5.20.3/master/video-js-5.20.3.png">
 ### Quick Start
 
 ```html
