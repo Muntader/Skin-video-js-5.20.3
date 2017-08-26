@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+
+<title>Video.js | HTML5 Video Player</title>
+
+   
+<link href="video-js-5.20.3/video-js.css" rel="stylesheet">
+<script src="video-js-5.20.3/video.js"></script>
+
+
+</head>
+<body>
+
+<center>
+<h1>mp4</h1>
+<video id="play2" class="video-js"></video>
+<script>
+var Player = videojs("play2", { 
+"controls": true, 
+"autoplay": false, 
+"preload": "auto" ,
+"poster": "video-js-5.20.3/oceans.png",
+"width": 960,
+"height": 400,
+sources: [
+{ src: 'https://vjs.zencdn.net/v/oceans.mp4', type: 'video/mp4'},
+{ src: 'https://vjs.zencdn.net/v/oceans.webm', type: 'video/webm'},
+{ src: 'https://vjs.zencdn.net/v/oceans.ogg', type: 'video/ogg'},
+],
+});
+</script>
+</center>
+</body>
+</html>
